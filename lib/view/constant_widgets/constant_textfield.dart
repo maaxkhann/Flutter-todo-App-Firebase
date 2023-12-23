@@ -32,10 +32,10 @@ class ConstantTextField extends StatelessWidget {
             onTap: onTapSuffixIcon,
               child: Icon(suffixIcon)),
           enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: kBlack)
+              borderSide: BorderSide(color: Colors.teal)
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: kBlack)
+            borderSide: BorderSide(color: Colors.teal)
           )
       ),
     );

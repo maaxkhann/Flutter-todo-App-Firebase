@@ -12,14 +12,21 @@ class AuthViewModel with ChangeNotifier {
   User? user;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<void> createUser(BuildContext context, String email, String password) async {
+  Future<void> createUser(BuildContext context, String name, String email, String password) async {
     ProgressDialog progressDialog = ProgressDialog(context,
         title: const Text('Signing Up'), message: const Text('Please wait'));
     progressDialog.show();
     try {
     UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
     if(userCredential.user != null) {
+      String uId = auth.currentUser!.uid;
       progressDialog.dismiss();
+      DocumentReference documentReference = firestore.collection('Users').doc(uId);
+      await documentReference.set({
+        'name' : name,
+        'email' : email,
+        'userId' : uId
+      });
       Fluttertoast.showToast(msg: 'Sign Up Successfully');
       Get.off(()=> LoginView());
     }

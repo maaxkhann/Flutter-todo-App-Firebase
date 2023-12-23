@@ -29,7 +29,7 @@ class SignUpView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                Colors.grey.withOpacity(0.3),
+                Colors.grey.withOpacity(0.4),
                 //  Colors.blueGrey,
                 Colors.grey.withOpacity(0.5),
               ],
@@ -74,7 +74,8 @@ class SignUpView extends StatelessWidget {
                       Fluttertoast.showToast(msg: 'Password not matched');
                       return;
                     }else {
-                      authViewModel.createUser(context, emailController.text.trim(), passwordController.text.trim());
+                      authViewModel.createUser(context, nameController.text.trim(), emailController.text.trim(),
+                          passwordController.text.trim());
                     }
                   },
                     text: 'Sign Up', buttonColor: kButtonColor, textColor: kWhite,),
