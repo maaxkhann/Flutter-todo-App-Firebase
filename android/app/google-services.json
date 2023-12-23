@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "444286982103",
+    "firebase_url": "https://hospital-appointment-cb651-default-rtdb.firebaseio.com",
+    "project_id": "hospital-appointment-cb651",
+    "storage_bucket": "hospital-appointment-cb651.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444286982103:android:7e1149dd2df41a9b08dd92",
+        "android_client_info": {
+          "package_name": "com.example.hospital_appointment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444286982103-ptfncd1h5i0bp1h9bhekfm55mkmrk53g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCga4TJjz-5Wi0vuXLVWxVAQEU7g6a9e50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444286982103-ptfncd1h5i0bp1h9bhekfm55mkmrk53g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444286982103:android:f2ce2026b883c75c08dd92",
+        "android_client_info": {
+          "package_name": "com.example.to_do_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444286982103-ptfncd1h5i0bp1h9bhekfm55mkmrk53g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCga4TJjz-5Wi0vuXLVWxVAQEU7g6a9e50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444286982103-ptfncd1h5i0bp1h9bhekfm55mkmrk53g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
