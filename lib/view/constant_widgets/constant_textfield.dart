@@ -7,14 +7,16 @@ class ConstantTextField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hintText,
-    required this.suffixIcon,
+    this.suffixIcon,
+    required this.prefixIcon,
     this.obscureText,
     this.onTapSuffixIcon
   });
 
   final TextEditingController controller;
   final String hintText;
-  final IconData suffixIcon;
+  final IconData? suffixIcon;
+  final IconData prefixIcon;
   final bool? obscureText;
   final VoidCallback? onTapSuffixIcon;
 
@@ -25,13 +27,14 @@ class ConstantTextField extends StatelessWidget {
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
           hintText: hintText,
+          prefixIcon: Icon(prefixIcon),
           suffixIcon: InkWell(
             onTap: onTapSuffixIcon,
               child: Icon(suffixIcon)),
-          enabledBorder: const UnderlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: kBlack)
           ),
-          focusedBorder: const UnderlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: kBlack)
           )
       ),

@@ -43,14 +43,14 @@ class SignUpView extends StatelessWidget {
                   //    const Icon(Icons.arrow_back_ios, ),
                   const Text('Create Account', style: kHead1,),
                   SizedBox(height: size.height * 0.05,),
-                  ConstantTextField(controller: nameController, hintText: 'Enter Name', suffixIcon: Icons.person),
+                  ConstantTextField(controller: nameController, hintText: 'Enter Name', prefixIcon: Icons.person),
                   SizedBox(height: size.height * 0.04,),
-                  ConstantTextField(controller: emailController, hintText: 'Enter Email', suffixIcon: Icons.email),
+                  ConstantTextField(controller: emailController, hintText: 'Enter Email', prefixIcon: Icons.email),
                   SizedBox(height: size.height * 0.04,),
                   ValueListenableBuilder(valueListenable: isPasswordVisible,
                       builder: (ctx, value, child) {
                         return ConstantTextField(controller: passwordController, hintText: 'Enter Password',
-                          obscureText: !isPasswordVisible.value,
+                          obscureText: !isPasswordVisible.value, prefixIcon: Icons.password,
                           suffixIcon: value == true ? Icons.visibility : Icons.visibility_off, onTapSuffixIcon: () {
                             isPasswordVisible.value = !isPasswordVisible.value;
                           },);
@@ -59,7 +59,7 @@ class SignUpView extends StatelessWidget {
                   ValueListenableBuilder(valueListenable: isConfirmPasswordVisible,
                       builder: (ctx, value, child) {
                         return ConstantTextField(controller: confirmPasswordController, hintText: 'Confirm Password',
-                          obscureText: !isConfirmPasswordVisible.value,
+                          obscureText: !isConfirmPasswordVisible.value, prefixIcon: Icons.password,
                           suffixIcon: value == true ? Icons.visibility : Icons.visibility_off, onTapSuffixIcon: () {
                             isConfirmPasswordVisible.value = !isConfirmPasswordVisible.value;
                           },);

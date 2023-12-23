@@ -42,12 +42,12 @@ class LoginView extends StatelessWidget {
                   const Text('Welcome Back!', style: kHead1,),
                   const Text('Enter Your Email & Password..', style: kHead2,),
                   SizedBox(height: size.height * 0.08,),
-                  ConstantTextField(controller: emailController, hintText: 'Enter Email', suffixIcon: Icons.email),
+                  ConstantTextField(controller: emailController, hintText: 'Enter Email', prefixIcon: Icons.email),
                   SizedBox(height: size.height * 0.04,),
                   ValueListenableBuilder(valueListenable: isPasswordVisible,
                       builder: (ctx, value, child) {
                     return ConstantTextField(controller: passwordController, hintText: 'Enter Password',
-                      obscureText: !isPasswordVisible.value,
+                      obscureText: !isPasswordVisible.value, prefixIcon: Icons.password,
                         suffixIcon: value == true ? Icons.visibility : Icons.visibility_off, onTapSuffixIcon: () {
                       isPasswordVisible.value = !isPasswordVisible.value;
                     },);
