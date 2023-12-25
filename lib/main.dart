@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:to_do_app/firebase_options.dart';
 import 'package:to_do_app/view/auth_view/login_view.dart';
 import 'package:to_do_app/view_model/auth_view_model.dart';
+import 'package:to_do_app/view_model/tasks_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => AuthViewModel())
+      ChangeNotifierProvider(create: (_) => AuthViewModel()),
+      ChangeNotifierProvider(create: (_) => TasksViewModel()),
     ],
     child: GetMaterialApp(
       debugShowCheckedModeBanner: false,
