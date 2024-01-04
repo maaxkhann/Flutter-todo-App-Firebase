@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
-import '../../constants/colors.dart';
-import '../../constants/text_styles.dart';
 
 class ConstantButton extends StatelessWidget {
   const ConstantButton({
@@ -29,8 +26,13 @@ class ConstantButton extends StatelessWidget {
         height: size.height * 0.065,
         decoration: BoxDecoration(
             color: buttonColor, borderRadius: BorderRadius.circular(15)),
-        child: Center(child: isCompleted == false ? Text(text, style: const TextStyle(fontSize: 18, color: Colors.white))
-      : const SpinKitCircle(color: Colors.black,)),
+        child: Center(
+            child: isCompleted == false
+                ? Text(text,
+                    style: const TextStyle(fontSize: 18, color: Colors.white))
+                : const SpinKitCircle(
+                    color: Colors.black,
+                  )),
       ),
     );
   }
