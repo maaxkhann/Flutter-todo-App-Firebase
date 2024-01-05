@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/constants/colors.dart';
 import 'package:to_do_app/constants/text_styles.dart';
@@ -13,39 +14,44 @@ class AddTasksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tasksViewModel = Provider.of<TasksViewModel>(context, listen: false);
-    final size = MediaQuery.sizeOf(context);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            height: size.height * 1,
+            height: Get.height * 1,
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [
-                      Colors.grey.withOpacity(0.4),
-                      Colors.grey.withOpacity(0.5),
-                    ]
-                )
-            ),
+                gradient: LinearGradient(colors: [
+              Colors.grey.withOpacity(0.4),
+              Colors.grey.withOpacity(0.5),
+            ])),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Add Your Tasks Here', style: kHead1,),
+                const Text(
+                  'Add Your Tasks Here',
+                  style: kHead1,
+                ),
                 SizedBox(
-                  height: size.height * 0.7,
+                  height: Get.height * 0.7,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ConstantTextField(controller: taskController, hintText: 'Add Task',
+                      ConstantTextField(
+                          controller: taskController,
+                          hintText: 'Add Task',
                           prefixIcon: Icons.task),
                       Consumer<TasksViewModel>(
                         builder: (context, value, child) {
-                          return ConstantButton(text: 'Add Task', buttonColor: kButtonColor, textColor: kWhite,
+                          return ConstantButton(
+                              text: 'Add Task',
+                              buttonColor: kButtonColor,
+                              textColor: kWhite,
                               isCompleted: value.isCompleted,
                               onTap: () {
-                                tasksViewModel.addTasks(taskController.text.trim());
+                                tasksViewModel
+                                    .addTasks(taskController.text.trim());
                               });
                         },
                       )

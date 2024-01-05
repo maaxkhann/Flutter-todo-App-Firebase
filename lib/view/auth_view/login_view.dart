@@ -11,63 +11,100 @@ import '../constant_widgets/constant_textfield.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+
   ValueNotifier<bool> isPasswordVisible = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
     final authViewModel = Provider.of<AuthViewModel>(context, listen: false);
-    final Size size = MediaQuery.sizeOf(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: kBGColor,
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
+              gradient: LinearGradient(
+            colors: [
               Colors.grey.withOpacity(0.4),
-            //  Colors.blueGrey,
+              //  Colors.blueGrey,
               Colors.grey.withOpacity(0.5),
             ],
-            )
-          ),
+          )),
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-              //    const Icon(Icons.arrow_back_ios, ),
-                  const Text('Welcome Back!', style: kHead1,),
-                  const Text('Enter Your Email & Password..', style: kHead2,),
-                  SizedBox(height: size.height * 0.08,),
-                  ConstantTextField(controller: emailController, hintText: 'Enter Email', prefixIcon: Icons.email),
-                  SizedBox(height: size.height * 0.04,),
-                  ValueListenableBuilder(valueListenable: isPasswordVisible,
+                  //    const Icon(Icons.arrow_back_ios, ),
+                  const Text(
+                    'Welcome Back!',
+                    style: kHead1,
+                  ),
+                  const Text(
+                    'Enter Your Email & Password..',
+                    style: kHead2,
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.08,
+                  ),
+                  ConstantTextField(
+                      controller: authViewModel.emailController,
+                      hintText: 'Enter Email',
+                      prefixIcon: Icons.email),
+                  SizedBox(
+                    height: Get.height * 0.04,
+                  ),
+                  ValueListenableBuilder(
+                      valueListenable: isPasswordVisible,
                       builder: (ctx, value, child) {
-                    return ConstantTextField(controller: passwordController, hintText: 'Enter Password',
-                      obscureText: !isPasswordVisible.value, prefixIcon: Icons.password,
-                        suffixIcon: value == true ? Icons.visibility : Icons.visibility_off, onTapSuffixIcon: () {
-                      isPasswordVisible.value = !isPasswordVisible.value;
-                    },);
+                        return ConstantTextField(
+                          controller: authViewModel.passwordController,
+                          hintText: 'Enter Password',
+                          obscureText: !isPasswordVisible.value,
+                          prefixIcon: Icons.password,
+                          suffixIcon: value == true
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          onTapSuffixIcon: () {
+                            isPasswordVisible.value = !isPasswordVisible.value;
+                          },
+                        );
                       }),
-                  SizedBox(height: size.height * 0.1,),
-                  ConstantButton( onTap: () {
-                    if(emailController.text.isEmpty || passwordController.text.isEmpty) {
-                      Fluttertoast.showToast(msg: 'Please fill both the fields');
-                      return;
-                    }else {
-                      authViewModel.loginUser(context, emailController.text.trim(), passwordController.text.trim());
-                    }
-                  },
-                    text: 'Login', buttonColor: kButtonColor, textColor: kWhite,),
+                  SizedBox(
+                    height: Get.height * 0.1,
+                  ),
+                  ConstantButton(
+                    onTap: () {
+                      if (authViewModel.emailController.text.isEmpty ||
+                          authViewModel.passwordController.text.isEmpty) {
+                        Fluttertoast.showToast(
+                            msg: 'Please fill both the fields');
+                        return;
+                      } else {
+                        authViewModel.loginUser(
+                            context,
+                            authViewModel.emailController.text.trim(),
+                            authViewModel.passwordController.text.trim());
+                      }
+                    },
+                    text: 'Login',
+                    buttonColor: kButtonColor,
+                    textColor: kWhite,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Don\'t have account?', style: kHead2,),
-                      TextButton(onPressed: () => Get.off(()=> SignUpView()),
-                          child: const Text('Sign Up', style: TextStyle(fontStyle: FontStyle.italic),))
+                      const Text(
+                        'Don\'t have account?',
+                        style: kHead2,
+                      ),
+                      TextButton(
+                          onPressed: () => Get.off(() => SignUpView()),
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(fontStyle: FontStyle.italic),
+                          ))
                     ],
                   )
                 ],

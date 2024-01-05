@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/constants/colors.dart';
 import 'package:to_do_app/constants/text_styles.dart';
@@ -8,7 +9,6 @@ import 'package:to_do_app/view_model/user_profile_view_model.dart';
 
 class UserProfileView extends StatelessWidget {
   const UserProfileView({super.key});
-
   @override
   Widget build(BuildContext context) {
     final userProfileViewModel =
@@ -46,30 +46,35 @@ class UserProfileView extends StatelessWidget {
                       children: [
                         value.image != null
                             ? CircleAvatar(
-                                radius: 40,
-                                child: ClipOval(
-                                  child: Image.file(
-                                    value.image!,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
+                                radius: Get.height * 0.06,
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: FileImage(value.image!)))),
                               )
                             : CircleAvatar(
-                                radius: 40,
-                                child: ClipOval(
-                                  child: Image.network(snapshot
-                                          .data?.profileImage ??
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnme6H9VJy3qLGvuHRIX8IK4jRpjo_xUWlTw&usqp=CAU'),
+                                radius: Get.height * 0.06,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: Image.network(snapshot
+                                                      .data?.profileImage ??
+                                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnme6H9VJy3qLGvuHRIX8IK4jRpjo_xUWlTw&usqp=CAU')
+                                              .image)),
                                 ),
                               ),
                         Positioned(
-                            left: 55,
+                            left: Get.width * 0.16,
                             bottom: -5,
                             child: InkWell(
                               onTap: () => userProfileViewModel.pickImage(),
                               child: value.isUpload
-                                  ? const SpinKitCircle(
-                                      size: 25,
+                                  ? SpinKitCircle(
+                                      size: Get.height * 0.04,
                                       color: kBlack,
                                     )
                                   : const Icon(
@@ -80,8 +85,8 @@ class UserProfileView extends StatelessWidget {
                       ],
                     );
                   })),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: Get.height * 0.03,
                   ),
                   Card(
                     color: Colors.grey.shade200,
@@ -95,8 +100,8 @@ class UserProfileView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: Get.height * 0.01,
                   ),
                   Card(
                     color: Colors.grey.shade200,

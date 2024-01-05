@@ -9,6 +9,21 @@ import 'package:to_do_app/view/auth_view/login_view.dart';
 import 'package:to_do_app/view/tasks_view/tasks_list_view.dart';
 
 class AuthViewModel with ChangeNotifier {
+  @override
+  void dispose() {
+    // dispose your stuff here
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
   User? user;
   FirebaseFirestore firestore = FirebaseFirestore.instance;

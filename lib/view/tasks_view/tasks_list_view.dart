@@ -40,7 +40,7 @@ class TasksListView extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
+                          padding: EdgeInsets.only(right: Get.width * 0.03),
                           child: IconButton(
                             onPressed: () =>
                                 Get.to(() => const UserProfileView()),
